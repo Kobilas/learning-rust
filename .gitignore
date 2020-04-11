@@ -1,3 +1,7 @@
 # Removing files created due to compilation
 *.exe
 *.pdb
+
+# Removing files/folders created due to cargo build
+target/
+Cargo.lock

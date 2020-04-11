@@ -1,3 +1,5 @@
+# TOML stands for Tom's Obvious, Minimal Language
+
 [package]
 name = "hello_cargo"
 version = "0.1.0"
