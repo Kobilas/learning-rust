@@ -3,7 +3,7 @@ use std::io;
 fn main() {
     println!("Temperature converter");
 
-    let mut option = String::new();
+    let mut option;
 
     loop {
         println!("Input F or C, to enter Fahrenheit or Celsius temperature, respectively.");
