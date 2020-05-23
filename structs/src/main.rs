@@ -1,3 +1,5 @@
+// annontation allows for pretty-printing of this struct in Debug
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -20,6 +22,9 @@ fn main() {
         width,
         height
     };
+    // pretty print of rect struct
+    println!("rect2 is (using :? pretty-print syntax) {:?}", rect2);
+    println!("rect2 is (using :#? pretty-print syntax) {:#?}", rect2);
     println!("The area of rectangle is {} square pixels.", area_w_struct(&rect2));
 }
 
