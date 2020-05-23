@@ -5,6 +5,17 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    // borrowing self immutably since we just want to read from it
+    // can also do &mut self to borrow self mutably if we did want to change/write to it
+    // can ALSO take ownership of self by just using self as a parameter
+    // this is rare and usually only the case for if we want to change the reference
+    // to make sure it is no longer usable after the method call
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
 fn main() {
     // using two variables
     let width = 30;
@@ -26,6 +37,9 @@ fn main() {
     println!("rect2 is (using :? pretty-print syntax) {:?}", rect2);
     println!("rect2 is (using :#? pretty-print syntax) {:#?}", rect2);
     println!("The area of rectangle is {} square pixels.", area_w_struct(&rect2));
+
+    // using one struct that has a method for getting the area
+    println!("The area of rectangle is {} square pixels.", rect2.area());
 }
 
 fn area(width: u32, height: u32) -> u32 {
