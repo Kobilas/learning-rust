@@ -14,6 +14,15 @@ impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
     }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+
+    // associated function, uses :: syntax to call it
+    fn square(size: u32) -> Rectangle {
+        Rectangle { width: size, height: size }
+    }
 }
 
 fn main() {
@@ -40,6 +49,14 @@ fn main() {
 
     // using one struct that has a method for getting the area
     println!("The area of rectangle is {} square pixels.", rect2.area());
+
+    let rect3 = Rectangle { width: 10, height: 40 };
+    let rect4 = Rectangle { width: 40, height: 60 };
+    println!("Can rect2 hold rect3? {}", rect2.can_hold(&rect3));
+    println!("Can rect2 hold rect4? {}", rect2.can_hold(&rect4));
+
+    let sq1 = Rectangle::square(3);
+    println!("sq1 is {:?}", sq1);
 }
 
 fn area(width: u32, height: u32) -> u32 {
