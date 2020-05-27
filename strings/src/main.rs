@@ -1,3 +1,5 @@
+// TODO: make this work
+
 fn main() {
     let mut s = String::from("hello world");
     let word = first_word(&s);
