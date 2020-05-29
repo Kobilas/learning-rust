@@ -4,6 +4,26 @@ use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 
+// making a struct that will add implicit error-checking to program
+pub struct Guess {
+    value: u8,
+}
+
+impl Guess {
+    pub fn new(value: u8) -> Guess {
+        if value < 1 || value > 100 {
+            panic!("Guess value must be between 1 and 100, got {}", value);
+        }
+        Guess {
+            value
+        }
+    }
+    
+    pub fn value(&self) -> u8 {
+        self.value
+    }
+}
+
 fn main() {
     println!("Guess the number!");
 
@@ -48,8 +68,8 @@ fn main() {
         // trim whitespace
         // parse method on string parses into a number
             // using : after let guess: means we will annontate the type ourselves
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
+        let guess = match guess.trim().parse() {
+            Ok(num) => Guess::new(num),
             // _ is catchall value, match all Err values
             Err(_) => continue,
         };
@@ -57,11 +77,11 @@ fn main() {
             //.expect("Please type a number!");
 
         // {} used to print values
-        println!("You guessed: {}", guess);
+        println!("You guessed: {}", guess.value());
 
         // cmp method compares two values and returns variant of Ordering enumeration
         // use match to determine which arm of code to execute based on variant returned
-        match guess.cmp(&secret_number) {
+        match guess.value().cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
             Ordering::Greater => println!("Too big!"),
             Ordering::Equal => {
