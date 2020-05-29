@@ -1,8 +1,10 @@
-use std::{io, collections::{HashMap, hash_map::Entry}};
+use std::io;
+use std::collections::{HashMap, hash_map::Entry};
 
 fn main() {
     let mut ans1 = String::new();
     let mut ans2 = String::new();
+
     // ems - employee management system
     let mut ems = HashMap::new();
     loop {
@@ -47,11 +49,17 @@ fn main() {
                  */
                 match ems.entry(ans1) {
                     Entry::Vacant(e) => {
+                        ans1 = e.key().to_string();
+                        let ans3 = ans2.clone();
                         e.insert(vec![ans2]);
+                        println!("Added user {} to department {}", ans3, ans1);
                         //ans1 = e.key().to_string();
                     },
                     Entry::Occupied(mut e) => {
+                        ans1 = e.key().to_string();
+                        let ans3 = ans2.clone();
                         e.get_mut().push(ans2);
+                        println!("Added user {} to department {}", ans3, ans1);
                         //ans1 = e.key().to_string();
                     },
                 }
@@ -69,7 +77,7 @@ fn main() {
 }
 
 fn print_main_menu() {
-    println!("HashMap and Vector Employee Management System");
+    println!("\nHashMap and Vector Employee Management System");
     println!("                  Main Menu");
     println!("a - Add user to department");
     println!("v - View current status");
