@@ -36,14 +36,14 @@ fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
     let result = largest_i32(&number_list);
     println!("The largest number using largest_i32 is {}", result);
-    /* let result = largest(&number_list);
-    println!("The largest number using largest is {}", result); */
+    let result = largest(&number_list);
+    println!("The largest number using largest is {}", result);
 
     let char_list = vec!['y', 'm', 'a', 'q'];
     let result = largest_char(&char_list);
     println!("The largest char using largest_char is {}", result);
-    /* let result = largest(&number_list);
-    println!("The largest number using largest is {}", result); */
+    let result = largest(&number_list);
+    println!("The largest char using largest is {}", result);
     
     let p = Point { x: 5, y: 10 };
     println!("p.x = {}", p.x());
@@ -78,7 +78,7 @@ fn largest_char(list: &[char]) -> char {
 }
 
 // Commented out until traits are properly understood
-/* fn  largest<T>(list: &[T]) -> T {
+fn  largest<T: PartialOrd + Copy>(list: &[T]) -> T {
     let mut largest = list[0];
     for &item in list.iter() {
         if item > largest {
@@ -86,4 +86,4 @@ fn largest_char(list: &[char]) -> char {
         }
     }
     largest
-} */
+}
